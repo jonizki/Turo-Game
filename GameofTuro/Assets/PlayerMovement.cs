@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKey("space") && isGrounded)
         {
-            rb2d.velocity = new Vector2(0, 12);
+            rb2d.velocity = new Vector2(0, 15);
         }
 
 
