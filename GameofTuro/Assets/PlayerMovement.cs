@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb2d;
     SpriteRenderer spriteRenderer;
+    Animator anim;
 
     bool isGrounded;
 
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
 
 
     }
@@ -53,10 +55,44 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if(Input.GetKey("space") && isGrounded)
+        if(rb2d.velocity.x > 0)
+        {
+            anim.SetBool("isRunning", true);
+        }
+
+        if (rb2d.velocity.x < 0)
+        {
+            anim.SetBool("isRunning", true);
+        }
+
+        if (rb2d.velocity.x == 0)
+        {
+            anim.SetBool("isRunning", false);
+        }
+
+
+        if (Input.GetKey("space") && isGrounded)
         {
             rb2d.velocity = new Vector2(0, 15);
         }
+
+        if (rb2d.velocity.y > 0.1)
+        {
+            anim.SetBool("isJumping", true);
+            anim.SetBool("isRunning", false);
+        }
+
+        if (rb2d.velocity.y < -3)
+        {
+            anim.SetBool("isJumping", false);
+        }
+
+
+
+
+
+
+
 
 
     }
