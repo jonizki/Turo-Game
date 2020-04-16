@@ -74,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey("space") && isGrounded)
         {
             rb2d.velocity = new Vector2(0, 15);
+            SoundManagerScript.Playsound("jumpSound");
         }
 
         if (rb2d.velocity.y > 0.1)
